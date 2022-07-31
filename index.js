@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
+const morgan = require('morgan')
+morgan('tiny')
 
 app.use(express.json())
+app.use(morgan())
 
 let persons =
 [
@@ -99,9 +102,9 @@ app.post('/api/persons', (request, response) =>
       name: body.name,
       number: body.number
     }
-  
+    
     persons = persons.concat(person)
-  
+
     response.json(person)
 })
 
